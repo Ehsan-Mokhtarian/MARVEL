@@ -1,0 +1,6 @@
+The function MARVEL.m is the main function of the algorithm. The input/output arguments are described in detail inside the file. It uses the function "CI_Test.m" to perform the required CI tests.
+The function CI_Test.m is designed to perform two types of CI tests: 1) Oracle CI tests using d-separation relations in the ground-truth DAG. 2) CI tests on Gaussian data, using Fischer's inverse Z transform. Note that when using oracl CI tests, you should feed the function with the ground truth.
+The function Generate_Data.m generates a graph, randomly permutes it and then creats a data matrix conforming to this permuted graph, using a linear SEM. Specific real world structures taken from the bayes net repository are inside the folder "structures". Include this folder if you are using Generate_Data.m to generate data conforming to these structures.
+The function learning_errors.m is used to compute the precision, recall and F1 score of the algorithm.
+
+See the file main.m for some examples of how to use these functions.
