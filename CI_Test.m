@@ -18,7 +18,6 @@ function CI = CI_Test(X,Y,S,D,alpha,cond_indep,varargin)
 % independent, false if dependent
 
 %--------------------------------------------------------------------------
-
     if strcmp(cond_indep, 'oracle')
         if nargin>=7
             G = varargin{1}; % G is required when performing oracle CI tests
@@ -30,9 +29,11 @@ function CI = CI_Test(X,Y,S,D,alpha,cond_indep,varargin)
         n = size(D, 1);
         c = norminv(1-alpha/2);
         DD = D(:,[X,Y,S]);
-        R = corrcoef(DD);
+        R =  corrcoef(DD); %cov(DD);
         P = inv(R);
         ro = -P(1,2)/sqrt(P(1,1)*P(2,2));
+%         ro = partialcorr(D(:,X), D(:,Y), D(:,S));
+        
         zro = 0.5*log((1+ro)/(1-ro));
         if abs(zro)<c/sqrt(n-size(S,2)-3)
             CI = true;
